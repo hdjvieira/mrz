@@ -23,8 +23,8 @@ function parseMRZ(lines) {
         case 30:
           return parsers.TD1(lines);
         case 36: {
-          const endLine1 = lines[0].substr(30, 36);
-          if (endLine1.match(/[0-9]/)) {
+          const startLine1 = lines[0].substr(0, 5);
+          if (startLine1.match(/I[0-9A-Z<]FRA/)) {
             return parsers.FRENCH_NATIONAL_ID(lines);
           } else {
             return parsers.TD2(lines);
